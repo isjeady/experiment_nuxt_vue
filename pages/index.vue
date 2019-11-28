@@ -34,7 +34,7 @@
                     {{ nbHits }} hits retrieved in {{ processingTimeMS }}ms for <q>{{ query }}</q>
                   </h1>
               </ais-stats>
-              
+
               <ais-pagination :class-names="stylePagination" />
 
               <ais-hits :class-names="{ 'ais-Hits' : 'mb-10' }">
@@ -103,11 +103,11 @@
       // Nuxt merges `asyncData` and `data` on the client
       this.$instantsearch.hydrate(this.algoliaState);
     },
-    asyncData({ app }) {
+    asyncData({ app,query }) {
         const instantsearch = app.$instantsearch;
         
         return instantsearch.findResultsState({
-          query : 'samsung',
+          query : query.query,
           hitsPerPage : 10
         }).then(() => ({
           algoliaState: instantsearch.getState()

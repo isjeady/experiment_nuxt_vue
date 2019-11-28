@@ -1,6 +1,11 @@
 
 import algoliasearch from 'algoliasearch/lite';
 import { createInstantSearch } from 'vue-instantsearch';
+import { history } from 'instantsearch.js/es/lib/routers';
+import { simple } from 'instantsearch.js/es/lib/stateMappings';
+/*
+
+*/
 
 //inject instance into component
 export default ( { app } , inject) => {
@@ -12,6 +17,10 @@ export default ( { app } , inject) => {
 
   const { instantsearch } = createInstantSearch({
     searchClient,
+    routing : {
+      router : history(),
+      stateMapping : simple() 
+    },
     indexName: 'demo_ecommerce'
   })
 
