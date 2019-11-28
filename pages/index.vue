@@ -6,8 +6,21 @@
                 <h1 class="text-2xl text-gray-700 leading-tight">
                   Search
                 </h1>
+                <client-only>
+                  <ais-powered-by />
+                </client-only>
             </div>
-            <ais-search-box placeholder="Scrivi cosa cercare..." />
+            <ais-search-box 
+              placeholder="Scrivi cosa cercare..." 
+              :class-names="{
+                  'ais-SearchBox' : 'w-full',
+                  'ais-SearchBox-input' : 'border-b-2 border-green-500 rounded w-full p-4 text-lg',
+                  'ais-SearchBox-submit' : 'hidden',
+                  'ais-SearchBox-resetIcon' : 'hidden',
+                  'ais-SearchBox-reset' : 'hidden'
+              }"
+            />
+
         </div>
 
         <ais-state-results>
@@ -15,7 +28,7 @@
             <!-- {{ hits.length }} -->
             
             <div v-if="hits.length">
-              <ais-stats>
+              <ais-stats :class-names="{ 'ais-Stats' : 'mb-4 text-gray-400 text-xs'}">
                   <h1 class="text-md mb-10 text-gray-700" slot-scope="{ hitsPerPage, nbPages, nbHits, page, processingTimeMS, query }">
                     Page {{ page + 1 }} of {{ nbPages }} with {{ hitsPerPage }} hits per page  -
                     {{ nbHits }} hits retrieved in {{ processingTimeMS }}ms for <q>{{ query }}</q>
@@ -28,7 +41,7 @@
               </ais-hits>
             </div>
 
-            <p v-if="!hits.length">
+            <p v-if="!hits.length" class="mb-4 text-gray-600 text-md">
               No results found for the query: <q>{{ query }}</q>
             </p>
 
@@ -41,7 +54,7 @@
 
 <script>
 	import {
-      AisInstantSearchSsr,AisHits,AisSearchBox,AisStateResults,AisStats
+      AisInstantSearchSsr,AisHits,AisSearchBox,AisStateResults,AisStats,AisPoweredBy
   } from 'vue-instantsearch';
   
   
@@ -51,6 +64,7 @@
       AisSearchBox,
       AisStateResults,
       AisStats,
+      AisPoweredBy,
       AisHits
     },
 		mounted(){

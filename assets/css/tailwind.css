@@ -2,9 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
 
 body {
-  @apply bg-gray-200;
+  @apply bg-green-100;
+  font-family: 'Alatsi', sans-serif;
 }
 
 .container {
