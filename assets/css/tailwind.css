@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
 
 body {
-  @apply bg-green-100;
+  @apply bg-gray-100;
   font-family: 'Alatsi', sans-serif;
 }
 
