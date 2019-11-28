@@ -35,8 +35,10 @@
                   </h1>
               </ais-stats>
               <ais-hits>
-                <div slot="item" slot-scope="{ item, index }">
-                  {{ index }} - {{ item }}
+                <div slot-scope="{ items }" >
+                  <div v-for="(item,index) in items" :key="index">
+                    <item-search :item="item"></item-search>
+                  </div>
                 </div>
               </ais-hits>
             </div>
@@ -57,6 +59,7 @@
       AisInstantSearchSsr,AisHits,AisSearchBox,AisStateResults,AisStats,AisPoweredBy
   } from 'vue-instantsearch';
   
+  import ItemSearch  from '@/components/ItemSearch.vue';
   
   export default {
     components : {
@@ -65,7 +68,8 @@
       AisStateResults,
       AisStats,
       AisPoweredBy,
-      AisHits
+      AisHits,
+      ItemSearch
     },
 		mounted(){
       console.log('Mounted');
@@ -89,7 +93,7 @@
         const instantsearch = app.$instantsearch;
         
         return instantsearch.findResultsState({
-          //query : 'samsung',
+          query : 'samsung',
           hitsPerPage : 10
         }).then(() => ({
           algoliaState: instantsearch.getState()
