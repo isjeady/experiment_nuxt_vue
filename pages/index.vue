@@ -30,7 +30,26 @@
       return {
         $_ais : this.$instantsearch
       }
-    }
+    },
+    data(){
+      return {
+        algoliaState : null
+      }
+    },
+    beforeMount() {
+      // Nuxt merges `asyncData` and `data` on the client
+      this.$instantsearch.hydrate(this.algoliaState);
+    },
+    asyncData({ app }) {
+        const instantsearch = app.$instantsearch;
+        
+        return instantsearch.findResultsState({
+          query : 'samsung',
+          hitsPerPage : 10
+        }).then(() => ({
+          algoliaState: instantsearch.getState()
+        }))
+    },
 	}
 </script>
 
