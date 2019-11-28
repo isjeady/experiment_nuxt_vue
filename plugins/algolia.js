@@ -6,13 +6,13 @@ import { createInstantSearch } from 'vue-instantsearch';
 export default ( { app } , inject) => {
 
   const searchClient = algoliasearch(
-    '69SS116S6F',
-    '87819ce485100e349c38162ea1c597c5'
+    'B1G2GM9NG0',
+    'aadef574be1f9252bb48d4ea09b5cfe5'
   )
 
   const { instantsearch } = createInstantSearch({
     searchClient,
-    indexName: 'instant_search'
+    indexName: 'demo_ecommerce'
   })
 
   inject('instantsearch', instantsearch);
