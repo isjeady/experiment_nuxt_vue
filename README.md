@@ -1,4 +1,4 @@
-# corso_nuxt_js
+# Experiment : Algolia Instant Search
 
 > My brilliant Nuxt.js project
 
